@@ -10,12 +10,11 @@ class SiteLogo extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Text(
-        "Waseem Kaskas",
+        "W",
         style: TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.underline,
-          color: CustomColor.yellowSecondary,
+          fontSize: 25,
+          fontWeight: FontWeight.w900,
+          color: CustomColor.yellowSecondary1,
         ),
       ),
     );

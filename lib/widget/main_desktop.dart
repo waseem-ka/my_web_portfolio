@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_web_portfolio/constants/colors.dart';
+import 'package:web/web.dart' as web;
 
 class MainDesktop extends StatelessWidget {
   const MainDesktop({super.key});
@@ -33,11 +34,17 @@ class MainDesktop extends StatelessWidget {
               SizedBox(
                 width: 260,
                 child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Get in touch",
-                    style: TextStyle(color: CustomColor.whitePrimary),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: CustomColor.yellowSecondary1,
+                    foregroundColor: CustomColor.whitePrimary,
                   ),
+                  onPressed: () {
+                    web.window.open(
+                      'https://drive.google.com/file/d/1oo3mOkw49KPWh8gKPmXQENtZiFcBuhs5/view?usp=drivesdk',
+                      '_blank',
+                    );
+                  },
+                  child: Text("Download CV"),
                 ),
               ),
             ],

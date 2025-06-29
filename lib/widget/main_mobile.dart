@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_web_portfolio/constants/colors.dart';
+import 'package:web/web.dart' as web;
 
 class MainMobile extends StatelessWidget {
   const MainMobile({super.key});
@@ -46,9 +47,18 @@ class MainMobile extends StatelessWidget {
           SizedBox(
             width: 195,
             child: ElevatedButton(
-              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: CustomColor.yellowSecondary1,
+                foregroundColor: CustomColor.whitePrimary,
+              ),
+              onPressed: () {
+                web.window.open(
+                  'https://drive.google.com/file/d/1oo3mOkw49KPWh8gKPmXQENtZiFcBuhs5/view?usp=drivesdk',
+                  '_blank',
+                );
+              },
               child: Text(
-                "Get in touch",
+                "Download CV",
                 style: TextStyle(
                   color: CustomColor.whitePrimary,
                   fontWeight: FontWeight.bold,

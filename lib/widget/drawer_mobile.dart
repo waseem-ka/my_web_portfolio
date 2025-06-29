@@ -3,8 +3,9 @@ import 'package:my_web_portfolio/constants/colors.dart';
 import 'package:my_web_portfolio/constants/nav_items.dart';
 
 class DrawerMobile extends StatelessWidget {
-  const DrawerMobile({super.key});
+  const DrawerMobile({super.key, required this.onNavItemTap});
 
+  final Function(int) onNavItemTap;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,7 +32,9 @@ class DrawerMobile extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
-              onTap: () {},
+              onTap: () {
+                onNavItemTap(i);
+              },
               leading: Icon(navIcons[i]),
               title: Text(navTitles[i]),
             ),
