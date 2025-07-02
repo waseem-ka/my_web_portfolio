@@ -56,7 +56,7 @@ class _ContactSectionState extends State<ContactSection> {
           ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 700),
             child: CustomTextField(
-              hintText: 'Your name',
+              hintText: 'Message',
               maxLines: 10,
               controller: Message,
             ),
@@ -76,25 +76,43 @@ class _ContactSectionState extends State<ContactSection> {
                   setState(() {
                     isLoading = true;
                   });
-                  sendToTelegram(
-                    name: Name.text,
-                    email: Email.text,
-                    message: Message.text,
-                  );
+                  if (Email.text.isEmpty ||
+                      Name.text.isEmpty ||
+                      Message.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Please Fill all forms'),
+                        backgroundColor: CustomColor.yellowSecondary,
+                      ),
+                    );
+                  } else if (!Email.text.endsWith('@gmail.com')) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Wrong Email'),
+                        backgroundColor: CustomColor.yellowSecondary,
+                      ),
+                    );
+                  } else {
+                    sendToTelegram(
+                      name: Name.text,
+                      email: Email.text,
+                      message: Message.text,
+                    );
 
-                  await Future.delayed(Duration(milliseconds: 500));
+                    await Future.delayed(Duration(milliseconds: 500));
 
-                  setState(() {
-                    isLoading = false;
+                    setState(() {
+                      isLoading = false;
 
-                    // إعادة تعيين كل شي
-                    Name.clear();
-                    Email.clear();
-                    Message.clear();
-                  });
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("✅ Message sent successfully!")),
-                  );
+                      // إعادة تعيين كل شي
+                      Name.clear();
+                      Email.clear();
+                      Message.clear();
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("✅ Message sent successfully!")),
+                    );
+                  }
                 },
                 child: Text("Get in touch"),
               ),
